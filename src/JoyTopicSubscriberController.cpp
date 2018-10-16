@@ -31,7 +31,7 @@ public:
 
     virtual bool start() override
     {
-        joySubscriber = node.subscribe("joy", 1, &JoyTopicSubscriberController::joyCallback, this);
+        joySubscriber = node.subscribe("/cnoid/joy", 1, &JoyTopicSubscriberController::joyCallback, this);
         return (bool)joySubscriber;
     }
 
