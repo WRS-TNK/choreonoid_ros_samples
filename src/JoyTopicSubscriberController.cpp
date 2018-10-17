@@ -19,7 +19,7 @@ class JoyTopicSubscriberController : public SimpleController, public JoystickInt
     std::mutex joyMutex;
     sensor_msgs::Joy tmpJoyState;
     sensor_msgs::Joy joyState;
-  string topic_name;
+  std::string topic_name;
     
 public:
     
@@ -34,7 +34,7 @@ public:
 
     virtual bool start() override
     {
-        joySubscriber = node.subscribe(topic_name, 1, &JoyTopicSubscriberController::joyCallback, this);
+      joySubscriber = node.subscribe(topic_name, 1, &JoyTopicSubscriberController::joyCallback, this);
         return (bool)joySubscriber;
     }
 
