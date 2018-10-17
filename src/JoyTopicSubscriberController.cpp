@@ -19,19 +19,22 @@ class JoyTopicSubscriberController : public SimpleController, public JoystickInt
     std::mutex joyMutex;
     sensor_msgs::Joy tmpJoyState;
     sensor_msgs::Joy joyState;
+  string topic_name;
     
 public:
     
     virtual bool initialize(SimpleControllerIO* io) override
     {
+      
         sharedJoystick = io->getOrCreateSharedObject<SharedJoystick>("joystick");
+        topic_name = io->optionString();
         sharedJoystick->setJoystick(this);
         return true;
     }
 
     virtual bool start() override
     {
-        joySubscriber = node.subscribe("joy", 1, &JoyTopicSubscriberController::joyCallback, this);
+        joySubscriber = node.subscribe(topic_name, 1, &JoyTopicSubscriberController::joyCallback, this);
         return (bool)joySubscriber;
     }
 
