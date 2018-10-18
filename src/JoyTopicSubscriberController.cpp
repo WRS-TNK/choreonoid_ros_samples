@@ -27,7 +27,13 @@ public:
     {
       
         sharedJoystick = io->getOrCreateSharedObject<SharedJoystick>("joystick");
-        topic_name = io->optionString();
+        std::string tmp_name = io->optionString();
+        for(int i=9; i<tmp_name.size(); i++){
+          topic_name.push_back(tmp_name[i]);
+        }
+
+        // topic_name = io->optionString();
+        
         sharedJoystick->setJoystick(this);
         return true;
     }
