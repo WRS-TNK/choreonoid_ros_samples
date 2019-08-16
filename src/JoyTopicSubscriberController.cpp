@@ -35,6 +35,8 @@ public:
         // topic_name = io->optionString();
         
         sharedJoystick->setJoystick(this);
+
+        ROS_INFO("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         return true;
     }
 
