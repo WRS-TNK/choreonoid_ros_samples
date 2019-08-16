@@ -19,7 +19,7 @@ class JoyTopicSubscriberController : public SimpleController, public JoystickInt
     std::mutex joyMutex;
     sensor_msgs::Joy tmpJoyState;
     sensor_msgs::Joy joyState;
-  std::string topic_name;
+    std::string topic_name;
     
 public:
     
