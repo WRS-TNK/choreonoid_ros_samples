@@ -124,8 +124,6 @@ public:
             double k = 1.0;
             trackL->dq() = k * (2.0 * pos[1] - pos[0]);
             trackR->dq() = k * (2.0 * pos[1] + pos[0]);
-            ROS_INFO("trackL->dq() : %lf", trackL->dq());
-            ROS_INFO("trackR->dq() : %lf", trackR->dq());
         } else {
             double k = 4.0;
             trackL->dq() = k * (pos[1] - pos[0]);
