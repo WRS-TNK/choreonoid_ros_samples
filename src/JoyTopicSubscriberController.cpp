@@ -27,14 +27,22 @@ public:
     {
       
         sharedJoystick = io->getOrCreateSharedObject<SharedJoystick>("joystick");
-        topic_name = io->optionString();
+        std::string tmp_name = io->optionString();
+        for(int i=9; i<tmp_name.size(); i++){
+          topic_name.push_back(tmp_name[i]);
+        }
+
+        // topic_name = io->optionString();
+        
         sharedJoystick->setJoystick(this);
+
+        ROS_INFO("yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         return true;
     }
 
     virtual bool start() override
     {
-        joySubscriber = node.subscribe(topic_name, 1, &JoyTopicSubscriberController::joyCallback, this);
+      joySubscriber = node.subscribe(topic_name, 1, &JoyTopicSubscriberController::joyCallback, this);
         return (bool)joySubscriber;
     }
 
